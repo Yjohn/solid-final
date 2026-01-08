@@ -14,14 +14,14 @@ export const PATIENTS = {
   patient2: {
     id: "patient2",
     label: "Patient 2",
-    webId: "http://localhost:3000/patient1/profile/card#me",
-    podBaseUrl: "http://localhost:3000/patient1/",
+    webId: "http://localhost:3000/patient2/profile/card#me",
+    podBaseUrl: "http://localhost:3000/patient2/",
   },
    patient3: {
     id: "patient3",
     label: "Patient 3",
-    webId: "http://localhost:3000/patient2/profile/card#me",
-    podBaseUrl: "http://localhost:3000/patient2/",
+    webId: "http://localhost:3000/patient3/profile/card#me",
+    podBaseUrl: "http://localhost:3000/patient3/",
   }
 } as const;
 // export const DOCTOR_WEBID = {
@@ -40,8 +40,7 @@ export const PATIENTS = {
 // } as const;
 
 // Clinician and other actors - again update to match pods you create.
-export const Patient_WEBID = "http://localhost:3000/Patient1/profile/card#me";
-export const DOCTOR_WEBID = "http://localhost:3000/doctor1/profile/card#me";
+export const DOCTOR_WEBID = "http://localhost:3000/doctor/profile/card#me";
 export const EMERGENCY_WEBID = "http://emergency.localhost:3000/profile/card#me";
 export const PHARMACY_WEBID = "http://pharmacy.localhost:3000/profile/card#me";
 export const NURSE_WEBID = "http://nurse.localhost:3000/profile/card#me";
