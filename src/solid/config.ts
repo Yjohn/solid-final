@@ -4,12 +4,12 @@ export const CSS_ISSUER = "https://solidcommunity.net";
 export const SOLID_CLIENT_ID =
   "urn:solid:healthcare-app";
 
-export const REDIRECT_URL = "http://localhost:5173/";
-export const POST_LOGOUT_REDIRECT_URL = "http://localhost:5173/";
+export const REDIRECT_URL = "https://solid-final.vercel.app/";
+export const POST_LOGOUT_REDIRECT_URL = "https://solid-final.vercel.app/";
 
 // Actors (example)
 export const DOCTOR_WEBID =
-  "http://localhost:3000/doctor/profile/card#me";
+  "https://doctor.solidcommunity.net/profile/card#me";
 
 export const EMERGENCY_WEBID =
   "http://localhost:3000/emergency/profile/card#me";
@@ -22,9 +22,9 @@ export const NURSE_WEBID =
 
 export const PATIENTS = {
   patient1: {
-    id: "patient1",
-    label: "Patient 1",
-    webId: "http://localhost:3000/patient1/profile/card#me",
-    podBaseUrl: "http://localhost:3000/patient1/",
+    id: "patient",
+    label: "Patient",
+    webId: "https://patient.solidcommunity.net/profile/card#me",
+    podBaseUrl: "https://patient.solidcommunity.net/",
   },
 } as const;
