@@ -1,9 +1,9 @@
 import { Session } from "@inrupt/solid-client-authn-browser";
-import {
-  CSS_ISSUER,
-  SOLID_CLIENT_ID,
-  REDIRECT_URL,
-} from "./config";
+// import {
+//   CSS_ISSUER,
+//   SOLID_CLIENT_ID,
+//   REDIRECT_URL,
+// } from "./config";
 
 export const session = new Session();
 
