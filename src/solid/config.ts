@@ -1,4 +1,4 @@
-export const CSS_ISSUER = "http://localhost:3000";
+export const CSS_ISSUER = "https://solidcommunity.net";
 
 // Client metadata MUST be reachable from inside Docker
 export const SOLID_CLIENT_ID =

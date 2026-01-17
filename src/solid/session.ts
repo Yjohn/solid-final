@@ -23,9 +23,9 @@ export function getWebId(): string | undefined {
 
 export async function login(): Promise<void> {
   await session.login({
-    oidcIssuer: "http://localhost:3000",
-    redirectUrl: window.location.origin,
-    clientName: "Solid Healthcare App"
+    oidcIssuer: "https://solidcommunity.net",
+    redirectUrl: "https://solid-final.vercel.app/",
+    clientId: "https://solid-final.vercel.app/clientid.json"
   });
 
 }
