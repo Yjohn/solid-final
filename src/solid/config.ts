@@ -1,46 +1,30 @@
+export const CSS_ISSUER = "http://localhost:3000";
 
-// Your Community Solid Server issuer
-export const CSS_ISSUER = "http://localhost:3000/";
+// Client metadata MUST be reachable from inside Docker
+export const SOLID_CLIENT_ID =
+  "urn:solid:healthcare-app";
 
-// Map of patients in the system.
-// Update webId and podBaseUrl to match your CSS pods.
+export const REDIRECT_URL = "http://localhost:5173/";
+export const POST_LOGOUT_REDIRECT_URL = "http://localhost:5173/";
+
+// Actors (example)
+export const DOCTOR_WEBID =
+  "http://localhost:3000/doctor/profile/card#me";
+
+export const EMERGENCY_WEBID =
+  "http://localhost:3000/emergency/profile/card#me";
+
+export const PHARMACY_WEBID =
+  "http://localhost:3000/pharmacy/profile/card#me";
+
+export const NURSE_WEBID =
+  "http://localhost:3000/nurse/profile/card#me";
+
 export const PATIENTS = {
   patient1: {
     id: "patient1",
     label: "Patient 1",
-    webId: "http://localhost:3000/patient/profile/card#me",
-    podBaseUrl: "http://localhost:3000/patient/",
+    webId: "http://localhost:3000/patient1/profile/card#me",
+    podBaseUrl: "http://localhost:3000/patient1/",
   },
-  patient2: {
-    id: "patient2",
-    label: "Patient 2",
-    webId: "http://localhost:3000/patient2/profile/card#me",
-    podBaseUrl: "http://localhost:3000/patient2/",
-  },
-   patient3: {
-    id: "patient3",
-    label: "Patient 3",
-    webId: "http://localhost:3000/patient3/profile/card#me",
-    podBaseUrl: "http://localhost:3000/patient3/",
-  }
 } as const;
-// export const DOCTOR_WEBID = {
-//   doctor1: {
-//     id: "doctor1",
-//     label: "Patient 1",
-//     webId: "http://localhost:3000/doctor1/profile/card#me",
-//     podBaseUrl: "http://localhost:3000/doctor/",
-//   },
-//   doctor2: {
-//     id: "doctor2",
-//     label: "Patient 2",
-//     webId: "http://localhost:3000/doctor2/profile/card#me",
-//     podBaseUrl: "http://localhost:3000/pdoctor2/",
-//   },
-// } as const;
-
-// Clinician and other actors - again update to match pods you create.
-export const DOCTOR_WEBID = "http://localhost:3000/doctor/profile/card#me";
-export const EMERGENCY_WEBID = "http://emergency.localhost:3000/profile/card#me";
-export const PHARMACY_WEBID = "http://pharmacy.localhost:3000/profile/card#me";
-export const NURSE_WEBID = "http://nurse.localhost:3000/profile/card#me";

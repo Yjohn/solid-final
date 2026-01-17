@@ -1,12 +1,12 @@
 import { Session } from "@inrupt/solid-client-authn-browser";
-import { CSS_ISSUER } from "./config";
+import {
+  CSS_ISSUER,
+  SOLID_CLIENT_ID,
+  REDIRECT_URL,
+} from "./config";
 
 export const session = new Session();
 
-/**
- * Call this once on app start to complete the OIDC redirect
- * and restore any previous session.
- */
 export async function initSessionFromRedirect(): Promise<void> {
   await session.handleIncomingRedirect({
     restorePreviousSession: true,
@@ -23,10 +23,11 @@ export function getWebId(): string | undefined {
 
 export async function login(): Promise<void> {
   await session.login({
-    oidcIssuer: CSS_ISSUER,
-    clientName: "CSS Healthcare ACP Demo",
+    oidcIssuer: "http://localhost:3000",
     redirectUrl: window.location.origin,
+    clientName: "Solid Healthcare App"
   });
+
 }
 
 export async function logout(): Promise<void> {
