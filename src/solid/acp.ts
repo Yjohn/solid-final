@@ -36,6 +36,13 @@ function buildAcrTurtle(opts: AccessOptions): string {
 @prefix acp: <http://www.w3.org/ns/solid/acp#>.
 @prefix acl: <http://www.w3.org/ns/auth/acl#>.
 
+acp:anyOf [
+  a acp:Matcher;
+  acp:agent <PATIENT_WEBID>;
+  acp:client <http://host.docker.internal:5173/clientid.jsonld>;
+  acp:issuer <http://localhost:3000/>;
+];
+
 <#root>
   a acp:AccessControlResource;
   acp:resource <${resourceUrl}>;

@@ -7,10 +7,15 @@ import { Session } from "@inrupt/solid-client-authn-browser";
 
 export const session = new Session();
 
-export async function initSessionFromRedirect(): Promise<void> {
-  await session.handleIncomingRedirect({
-    restorePreviousSession: true,
-  });
+// export async function initSessionFromRedirect(): Promise<void> {
+//   await session.handleIncomingRedirect({
+//     restorePreviousSession: true,
+//   });
+// }
+
+export async function handleRedirect() {
+  await session.handleIncomingRedirect(window.location.href);
+  return session.info.isLoggedIn;
 }
 
 export function isLoggedIn(): boolean {
@@ -22,10 +27,13 @@ export function getWebId(): string | undefined {
 }
 
 export async function login(): Promise<void> {
+  const issuer = import.meta.env.VITE_SOLID_ISSUER as string;
+  const redirectUrl = import.meta.env.VITE_REDIRECT_URL as string;
+  const clientId = import.meta.env.VITE_CLIENT_ID as string;
   await session.login({
-    oidcIssuer: "https://solidcommunity.net",
-    redirectUrl: "https://solid-final.vercel.app/",
-    clientId: "https://solid-final.vercel.app/clientid.json"
+    oidcIssuer: issuer,
+    redirectUrl,
+    clientId,
   });
 
 }
