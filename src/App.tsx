@@ -98,6 +98,14 @@ const App: React.FC = () => {
         setFullRecord(data);
         setFullRecordStatus(status);
 
+        if (status === 404) {
+          const empty = emptyFullRecord();
+          setFullRecord(empty);
+          setFullRecordStatus(404);
+          setFullRecordError("No full record exists yet for this patient.");
+          return;
+        }
+
         if (status === 403) {
           setFullRecordError("You do not have access to this patient's full record.");
         } else if (status === 404) {
@@ -200,10 +208,16 @@ const App: React.FC = () => {
       await applyAccessForFullRecord(session.fetch, {
         resourceUrl,
         patientWebId: patient.webId,
+
         doctorWebId: DOCTOR_WEBID,
         emergencyWebId: EMERGENCY_WEBID,
+        pharmacyWebId: PHARMACY_WEBID,
+        nurseWebId: NURSE_WEBID,
+
         doctorCanReadWrite,
         emergencyCanRead,
+        pharmacyCanRead: false,
+        nurseCanReadWrite: false,
       });
       alert("ACP updated for this patient's full record.");
     } catch (e: any) {
@@ -224,7 +238,7 @@ const App: React.FC = () => {
       await savePatientFile(session.fetch, patient.podBaseUrl, fileData);
       alert("File saved successfully!");
       setShowFileUpload(false);
-      
+
       // Reload files
       const files = await loadPatientFiles(session.fetch, patient.podBaseUrl);
       setPatientFiles(files);
@@ -246,7 +260,7 @@ const App: React.FC = () => {
 
     try {
       await deletePatientFile(session.fetch, patient.podBaseUrl, fileId);
-      
+
       // Update local state
       setPatientFiles(files => files.filter(f => f.id !== fileId));
       alert("File deleted successfully!");
@@ -339,6 +353,15 @@ const App: React.FC = () => {
   }
 
   function renderFullRecord() {
+    if (fullRecordStatus === 404 && role !== "patient" && role !== "doctor") {
+      return (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Full record</h2>
+          <p className="text-blue-700">No full record has been created yet for this patient.</p>
+        </div>
+      );
+    }
+
     if (!loggedIn) {
       return (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
@@ -409,7 +432,7 @@ const App: React.FC = () => {
   function renderFileManagement() {
     if (!loggedIn) return null;
 
-    
+
     const canEdit = role === "patient" || role === "doctor";
 
     return (

@@ -1,15 +1,27 @@
-export const CSS_ISSUER = "https://solidcommunity.net";
+// src/solid/config.ts
 
-// Client metadata MUST be reachable from inside Docker
-export const SOLID_CLIENT_ID =
-  "urn:solid:healthcare-app";
+/* =======================
+   ENV CONFIG (OIDC)
+   ======================= */
 
-export const REDIRECT_URL = "https://solid-final.vercel.app/";
-export const POST_LOGOUT_REDIRECT_URL = "https://solid-final.vercel.app/";
+export function requireEnv(name: string): string {
+  const v = import.meta.env[name];
+  if (!v || typeof v !== "string") throw new Error(`Missing required env variable: ${name}`);
+  return v;
+}
 
-// Actors (example)
+export const SOLID_ISSUER = "http://localhost:3000/";
+export const CLIENT_ID = "http://localhost:3000/.well-known/css/clientid.json";
+export const REDIRECT_URL = "http://localhost:5173/";
+export const POST_LOGOUT_URL = "http://localhost:5173/";
+
+
+/* =======================
+   ACTOR WEBIDs
+   ======================= */
+
 export const DOCTOR_WEBID =
-  "https://doctor.solidcommunity.net/profile/card#me";
+  "http://localhost:3000/doctor/profile/card#me";
 
 export const EMERGENCY_WEBID =
   "http://localhost:3000/emergency/profile/card#me";
@@ -20,11 +32,51 @@ export const PHARMACY_WEBID =
 export const NURSE_WEBID =
   "http://localhost:3000/nurse/profile/card#me";
 
+/* =======================
+   PATIENT REGISTRY
+   ======================= */
+
 export const PATIENTS = {
   patient1: {
-    id: "patient",
-    label: "Patient",
-    webId: "https://patient.solidcommunity.net/profile/card#me",
-    podBaseUrl: "https://patient.solidcommunity.net/",
+    label: "Patient 1",
+    webId: "http://localhost:3000/patient/profile/card#me",
+    podBaseUrl: "http://localhost:3000/patient/",
+  },
+  patient2: {
+    label: "Patient 2",
+    webId: "http://localhost:3000/patient2/profile/card#me",
+    podBaseUrl: "http://localhost:3000/patient2/",
   },
 } as const;
+
+
+// export const CSS_ISSUER = "http://localhost:3000";
+
+// // Client metadata MUST be reachable from inside Docker
+// export const SOLID_CLIENT_ID =
+//   "http://host.docker.internal:5173/clientid.jsonld";
+
+// export const REDIRECT_URL = "http://localhost:5173/redirect";
+// export const POST_LOGOUT_REDIRECT_URL = "http://localhost:5173/redirect";
+
+// // Actors (example)
+// export const DOCTOR_WEBID =
+//   "http://localhost:3000/doctor/profile/card#me";
+
+// export const EMERGENCY_WEBID =
+//   "http://localhost:3000/emergency/profile/card#me";
+
+// export const PHARMACY_WEBID =
+//   "http://localhost:3000/pharmacy/profile/card#me";
+
+// export const NURSE_WEBID =
+//   "http://localhost:3000/nurse/profile/card#me";
+
+// export const PATIENTS = {
+//   patient1: {
+//     id: "patient",
+//     label: "Patient",
+//     webId: "http://localhost:3000/patient/profile/card#me",
+//     podBaseUrl: "http://localhost:3000/patient/",
+//   },
+// } as const;
