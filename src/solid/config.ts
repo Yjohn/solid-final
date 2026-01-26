@@ -11,7 +11,7 @@ export function requireEnv(name: string): string {
 }
 
 export const SOLID_ISSUER = "http://localhost:3000/";
-export const CLIENT_ID = "http://localhost:3000/.well-known/css/clientid.json";
+export const CLIENT_ID = "http://localhost:5173/clientid.json";
 export const REDIRECT_URL = "http://localhost:5173/";
 export const POST_LOGOUT_URL = "http://localhost:5173/";
 
